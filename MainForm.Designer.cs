@@ -248,7 +248,7 @@
             this.updateButton.TabIndex = 24;
             this.updateButton.Text = "Update";
             this.updateButton.UseSelectable = true;
-            this.updateButton.Click += new System.EventHandler(this.MetroButton1Click);
+            this.updateButton.Click += new System.EventHandler(this.UpdateDataButtonClick);
             // 
             // craftLabel
             // 

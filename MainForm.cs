@@ -106,7 +106,7 @@
             }
         }
 
-        private void MetroButton1Click(object sender, EventArgs e)
+        private void UpdateDataButtonClick(object sender, EventArgs e)
         {
             dh.UpdateCharData(nameBox.Text,ToInt32(levelBox.Text),ToInt64(expBox.Text),ToInt32(apBox.Text),classComboBox.SelectedIndex,pathComboBox.SelectedIndex,ToInt32(pathLevelBox.Text)
                 ,craftTypeBox.Text,craftComboBox.SelectedIndex,ToInt32(craftExpBox.Text),Char.CharacterId);
