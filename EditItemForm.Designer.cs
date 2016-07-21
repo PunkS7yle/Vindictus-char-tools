@@ -37,7 +37,6 @@
             this.enhanceComboBox = new MetroFramework.Controls.MetroComboBox();
             this.qualLabel = new MetroFramework.Controls.MetroLabel();
             this.qualityComboBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
             this.itemClassLabel = new MetroFramework.Controls.MetroLabel();
             this.itemClassBox = new MetroFramework.Controls.MetroTextBox();
             this.SuspendLayout();
@@ -46,6 +45,8 @@
             // 
             this.prefixComboBox.FormattingEnabled = true;
             this.prefixComboBox.ItemHeight = 23;
+            this.prefixComboBox.Items.AddRange(new object[] {
+            "null"});
             this.prefixComboBox.Location = new System.Drawing.Point(76, 185);
             this.prefixComboBox.Name = "prefixComboBox";
             this.prefixComboBox.Size = new System.Drawing.Size(121, 29);
@@ -56,6 +57,8 @@
             // 
             this.suffixComboBox.FormattingEnabled = true;
             this.suffixComboBox.ItemHeight = 23;
+            this.suffixComboBox.Items.AddRange(new object[] {
+            "null"});
             this.suffixComboBox.Location = new System.Drawing.Point(76, 150);
             this.suffixComboBox.Name = "suffixComboBox";
             this.suffixComboBox.Size = new System.Drawing.Size(121, 29);
@@ -88,6 +91,7 @@
             this.doneEditButton.TabIndex = 5;
             this.doneEditButton.Text = "OK";
             this.doneEditButton.UseSelectable = true;
+            this.doneEditButton.Click += new System.EventHandler(this.DoneEditButtonClick);
             // 
             // enhanceLabel
             // 
@@ -159,16 +163,6 @@
             this.qualityComboBox.TabIndex = 10;
             this.qualityComboBox.UseSelectable = true;
             // 
-            // metroCheckBox1
-            // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(9, 267);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(120, 15);
-            this.metroCheckBox1.TabIndex = 11;
-            this.metroCheckBox1.Text = "Combination Item";
-            this.metroCheckBox1.UseSelectable = true;
-            // 
             // itemClassLabel
             // 
             this.itemClassLabel.AutoSize = true;
@@ -196,9 +190,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 609);
+            this.ControlBox = false;
             this.Controls.Add(this.itemClassBox);
             this.Controls.Add(this.itemClassLabel);
-            this.Controls.Add(this.metroCheckBox1);
             this.Controls.Add(this.qualityComboBox);
             this.Controls.Add(this.qualLabel);
             this.Controls.Add(this.enhanceComboBox);
@@ -226,7 +220,6 @@
         private MetroFramework.Controls.MetroComboBox enhanceComboBox;
         private MetroFramework.Controls.MetroLabel qualLabel;
         private MetroFramework.Controls.MetroComboBox qualityComboBox;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
         private MetroFramework.Controls.MetroLabel itemClassLabel;
         private MetroFramework.Controls.MetroTextBox itemClassBox;
     }

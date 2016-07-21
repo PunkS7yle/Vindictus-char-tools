@@ -94,6 +94,14 @@ namespace Vindictus_Tools
             var result = sql.Query(query);
             return result.ToList();
         }
+
+        public void DeleteItem(long itemId)
+        {
+            var query = $@"delete from heroes..item where ID = {itemId}
+                           delete from heroes..itemattribute where itemID={itemId}
+                           delete from heroes..equippable where ID ={itemId}";
+            sql.QueryMultiple(query);
+        }
  
     }
 }

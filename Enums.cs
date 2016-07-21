@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Vindictus_Tools
 {
+   
     public abstract class Enums
     {
 
         public const string ItemList = "itemlist.txt";
+        public const string PrefixList = "prefix.txt";
+        public const string SuffixList = "suffix.txt";
         public static readonly string[] Classes = { "Lann", "Fiona", "Evie", "Karok", "Kai", "Vella", "Hurk", "Lynn", "Arisha" };
-
-        public enum Scrolls
-        {
-            
-        }
+        
 
         public class Connection
         {

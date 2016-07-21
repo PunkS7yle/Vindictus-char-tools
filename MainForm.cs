@@ -16,17 +16,33 @@ namespace Vindictus_Tools
     {
         private DatabaseHandler dh;
         private readonly List<string> itemNames = File.ReadLines(ItemList).ToList();
-        public readonly Character Char = new Character();
+        public readonly Character Char = new Character();  
+        private readonly Dictionary<string, string> prefixes = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> suffixes = new Dictionary<string, string>();
 
         public MainForm()
         {
             EstablishConnection();
             InitializeComponent();
-            
+            LoadScrolls();
             classComboBox.Items.AddRange(Classes);
            // var form = new EditItemForm();
            // form.ShowDialog();
 
+        }
+
+        private void LoadScrolls()
+        {
+            foreach (var line in File.ReadAllLines(PrefixList))
+            {
+                var tmp = line.Split('=');
+                prefixes.Add(tmp[0], tmp[1]);
+            }
+            foreach (var line in File.ReadAllLines(SuffixList))
+            {
+                var tmp = line.Split('=');
+                suffixes.Add(tmp[0], tmp[1]);
+            }
         }
 
         private void EstablishConnection()
@@ -34,6 +50,8 @@ namespace Vindictus_Tools
            var conObj = JsonConvert.DeserializeObject<Connection>(File.ReadAllText("connInfo.json"));
            dh = new DatabaseHandler(conObj.Ip, conObj.User, conObj.Pass, "heroes");  
         }
+
+        
 
         private void SearchButtonClick(object sender, EventArgs e)
         {
@@ -96,7 +114,7 @@ namespace Vindictus_Tools
 
         private void ParseItems()
         {
-            //itemGrid.Rows.Clear();
+            itemListView.ClearObjects();   
             foreach (var row in dh.GetItems(Char.CharacterId))
             {
                 Item tempItem = new Item();
@@ -118,18 +136,19 @@ namespace Vindictus_Tools
             itemListView.ButtonClick += delegate (object sender, CellClickEventArgs e)
             {
                 MessageBox.Show($"Button clicked: ({e.RowIndex}, {e.SubItem}, {e.Model})");
-                EditItem(e.RowIndex,e.SubItem.Text);              
+                itemListView.DisableObject(e.Model);
+                HandleItem(e.RowIndex,e.SubItem.Text,(Item)e.Model);              
                 itemListView.RefreshObject(e.Model);
 
             };
         }
 
-        private void EditItem(int rowIndex, string value)
+        private void HandleItem(int rowIndex, string value, Item model)
         {
             if (value == "Edit")
             {
                 var atr = new ItemAttribute();
-                foreach (var row in dh.GetAttributes(ToInt64(itemListView.GetSubItem(rowIndex, 3).Text))) // 3 = index of itemid column
+                foreach (var row in dh.GetAttributes(model.Id)) 
                 {
                     if (row.Attribute == "ENHANCE")
                     {
@@ -148,7 +167,7 @@ namespace Vindictus_Tools
                     {
                         atr.Suffix = row.Value;
                     }
-                    else if (row.Attribute == "PREFIX")
+                    else if (row.Attribute== "PREFIX")
                     {
                         atr.Prefix = row.Value;
                     }
@@ -176,10 +195,25 @@ namespace Vindictus_Tools
 
                 }
 
-                  using (var form = new EditItemForm(atr))
+                  using (var form = new EditItemForm(atr,prefixes,suffixes,model))
                   {
-                      form.ShowDialog();
+                      var result =form.ShowDialog();
+                      if (result == DialogResult.OK)
+                      {
+                          itemListView.EnableObject(model);
+                      }
                   }
+            }
+            else if (value == "Delete")
+            {
+                
+                DialogResult deleteResult = MessageBox.Show( $"Are you sure you want to delete the item : \n Name : {model.Name} \n Slot : {model.SlotId}","WARNING",MessageBoxButtons.YesNo);
+                if (deleteResult == DialogResult.Yes)
+                {
+                    dh.DeleteItem(model.Id);
+                   
+                }
+               
             }
         }
 
