@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using System.Data;
 using Dapper;
 
 namespace Vindictus_Tools
 {
-    using System.Data.SqlClient;
-    using System.Windows.Forms;
-
+    
     class DatabaseHandler
     {
         private readonly SqlConnection sql;
@@ -30,6 +30,11 @@ namespace Vindictus_Tools
         public void Close()
         {
             sql.Close();
+        }
+
+        public bool IsOpen()
+        {
+            return sql.State == ConnectionState.Open;
         }
 
         public IEnumerable<dynamic> GetCharacterData(string paramType, string paramValue)
@@ -81,6 +86,13 @@ namespace Vindictus_Tools
                            update heroes..vocation set vocationclass={path},vocationlevel={pathlevel} where cid = {cid};
                            update heroes..manufacture set manufacturelid='{crafttype}',grade={craftgrade},experiencepoint={craftexp} where cid ={cid}";
             sql.QueryMultiple(query);
+        }
+
+        public IEnumerable<dynamic> GetAttributes(long itemId)
+        {
+            var query = $"select * from heroes..itemattribute where itemID={itemId}";
+            var result = sql.Query(query);
+            return result.ToList();
         }
  
     }

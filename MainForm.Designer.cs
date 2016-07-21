@@ -1,5 +1,9 @@
-﻿namespace Vindictus_Tools
+﻿using System.Windows.Forms;
+
+namespace Vindictus_Tools
 {
+   
+
     partial class MainForm
     {
         /// <summary>
@@ -28,9 +32,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.charInfoTab = new MetroFramework.Controls.MetroTabPage();
             this.guildBox = new MetroFramework.Controls.MetroTextBox();
@@ -62,32 +63,33 @@
             this.apLabel = new MetroFramework.Controls.MetroLabel();
             this.levelLabel = new MetroFramework.Controls.MetroLabel();
             this.levelBox = new MetroFramework.Controls.MetroTextBox();
-            this.itemsTab = new MetroFramework.Controls.MetroTabPage();
-            this.itemGrid = new MetroFramework.Controls.MetroGrid();
-            this.itemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemClassColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.slotColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tradeableColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expireColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleTab = new MetroFramework.Controls.MetroTabPage();
+            this.objectListTab = new MetroFramework.Controls.MetroTabPage();
+            this.itemListView = new BrightIdeasSoftware.FastObjectListView();
+            this.nameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.classColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.countColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.idColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.slotColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.tradeableColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.expirationColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.editColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.deleteColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.settingsButton = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.charInfoTab.SuspendLayout();
-            this.itemsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).BeginInit();
+            this.objectListTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemListView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tabControl.Controls.Add(this.charInfoTab);
-            this.tabControl.Controls.Add(this.itemsTab);
-            this.tabControl.Controls.Add(this.titleTab);
+            this.tabControl.Controls.Add(this.objectListTab);
             this.tabControl.Location = new System.Drawing.Point(23, 63);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 1;
-            this.tabControl.Size = new System.Drawing.Size(1000, 625);
+            this.tabControl.Size = new System.Drawing.Size(1020, 639);
             this.tabControl.TabIndex = 0;
             this.tabControl.UseSelectable = true;
             this.tabControl.UseStyleColors = true;
@@ -128,7 +130,7 @@
             this.charInfoTab.HorizontalScrollbarSize = 10;
             this.charInfoTab.Location = new System.Drawing.Point(4, 38);
             this.charInfoTab.Name = "charInfoTab";
-            this.charInfoTab.Size = new System.Drawing.Size(992, 583);
+            this.charInfoTab.Size = new System.Drawing.Size(1012, 597);
             this.charInfoTab.TabIndex = 0;
             this.charInfoTab.Text = "Character";
             this.charInfoTab.VerticalScrollbarBarColor = true;
@@ -457,131 +459,132 @@
             this.levelBox.TabIndex = 4;
             this.levelBox.UseSelectable = true;
             // 
-            // itemsTab
+            // objectListTab
             // 
-            this.itemsTab.Controls.Add(this.itemGrid);
-            this.itemsTab.HorizontalScrollbarBarColor = true;
-            this.itemsTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.itemsTab.HorizontalScrollbarSize = 10;
-            this.itemsTab.Location = new System.Drawing.Point(4, 38);
-            this.itemsTab.Name = "itemsTab";
-            this.itemsTab.Size = new System.Drawing.Size(992, 583);
-            this.itemsTab.TabIndex = 1;
-            this.itemsTab.Text = "ItemsManager";
-            this.itemsTab.VerticalScrollbarBarColor = true;
-            this.itemsTab.VerticalScrollbarHighlightOnWheel = false;
-            this.itemsTab.VerticalScrollbarSize = 10;
+            this.objectListTab.Controls.Add(this.itemListView);
+            this.objectListTab.HorizontalScrollbarBarColor = true;
+            this.objectListTab.HorizontalScrollbarHighlightOnWheel = false;
+            this.objectListTab.HorizontalScrollbarSize = 10;
+            this.objectListTab.Location = new System.Drawing.Point(4, 38);
+            this.objectListTab.Name = "objectListTab";
+            this.objectListTab.Size = new System.Drawing.Size(1012, 597);
+            this.objectListTab.TabIndex = 3;
+            this.objectListTab.Text = "Item Manager";
+            this.objectListTab.VerticalScrollbarBarColor = true;
+            this.objectListTab.VerticalScrollbarHighlightOnWheel = false;
+            this.objectListTab.VerticalScrollbarSize = 10;
             // 
-            // itemGrid
+            // itemListView
             // 
-            this.itemGrid.AllowUserToAddRows = false;
-            this.itemGrid.AllowUserToDeleteRows = false;
-            this.itemGrid.AllowUserToResizeRows = false;
-            this.itemGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.itemGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.itemGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.itemGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.itemGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemNameColumn,
-            this.itemClassColumn,
-            this.itemIdColumn,
+            this.itemListView.AllColumns.Add(this.nameColumn);
+            this.itemListView.AllColumns.Add(this.classColumn);
+            this.itemListView.AllColumns.Add(this.countColumn);
+            this.itemListView.AllColumns.Add(this.idColumn);
+            this.itemListView.AllColumns.Add(this.slotColumn);
+            this.itemListView.AllColumns.Add(this.tradeableColumn);
+            this.itemListView.AllColumns.Add(this.expirationColumn);
+            this.itemListView.AllColumns.Add(this.editColumn);
+            this.itemListView.AllColumns.Add(this.deleteColumn);
+            this.itemListView.CellEditUseWholeCell = false;
+            this.itemListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.nameColumn,
+            this.classColumn,
             this.countColumn,
+            this.idColumn,
             this.slotColumn,
             this.tradeableColumn,
-            this.expireColumn});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemGrid.DefaultCellStyle = dataGridViewCellStyle5;
-            this.itemGrid.EnableHeadersVisualStyles = false;
-            this.itemGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.itemGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.itemGrid.Location = new System.Drawing.Point(0, 0);
-            this.itemGrid.Name = "itemGrid";
-            this.itemGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.itemGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.itemGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.itemGrid.Size = new System.Drawing.Size(963, 582);
-            this.itemGrid.TabIndex = 2;
+            this.expirationColumn,
+            this.editColumn,
+            this.deleteColumn});
+            this.itemListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.itemListView.Font = new System.Drawing.Font("Noto Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemListView.Location = new System.Drawing.Point(1, 0);
+            this.itemListView.Name = "itemListView";
+            this.itemListView.ShowGroups = false;
+            this.itemListView.Size = new System.Drawing.Size(1012, 594);
+            this.itemListView.TabIndex = 2;
+            this.itemListView.UseCompatibleStateImageBehavior = false;
+            this.itemListView.UseHotItem = true;
+            this.itemListView.View = System.Windows.Forms.View.Details;
+            this.itemListView.VirtualMode = true;
             // 
-            // itemNameColumn
+            // nameColumn
             // 
-            this.itemNameColumn.HeaderText = "ItemName";
-            this.itemNameColumn.Name = "itemNameColumn";
-            this.itemNameColumn.Width = 200;
+            this.nameColumn.AspectName = "Name";
+            this.nameColumn.IsEditable = false;
+            this.nameColumn.Text = "Name";
+            this.nameColumn.UseFiltering = false;
             // 
-            // itemClassColumn
+            // classColumn
             // 
-            this.itemClassColumn.HeaderText = "ItemClass";
-            this.itemClassColumn.Name = "itemClassColumn";
-            this.itemClassColumn.Width = 150;
-            // 
-            // itemIdColumn
-            // 
-            this.itemIdColumn.HeaderText = "ItemID";
-            this.itemIdColumn.Name = "itemIdColumn";
-            this.itemIdColumn.Width = 150;
+            this.classColumn.AspectName = "Class";
+            this.classColumn.Text = "ItemClass";
+            this.classColumn.UseFiltering = false;
             // 
             // countColumn
             // 
-            this.countColumn.HeaderText = "Amount";
-            this.countColumn.Name = "countColumn";
+            this.countColumn.AspectName = "Amount";
+            this.countColumn.Text = "Amount";
+            this.countColumn.UseFiltering = false;
+            // 
+            // idColumn
+            // 
+            this.idColumn.AspectName = "Id";
+            this.idColumn.Text = "ItemId";
+            this.idColumn.UseFiltering = false;
             // 
             // slotColumn
             // 
-            this.slotColumn.HeaderText = "SlotId";
-            this.slotColumn.Name = "slotColumn";
+            this.slotColumn.AspectName = "SlotId";
+            this.slotColumn.Text = "Slot";
+            this.slotColumn.UseFiltering = false;
             // 
             // tradeableColumn
             // 
-            this.tradeableColumn.HeaderText = "Tradeable";
-            this.tradeableColumn.Name = "tradeableColumn";
+            this.tradeableColumn.AspectName = "Tradeable";
+            this.tradeableColumn.Text = "Tradeable";
+            this.tradeableColumn.UseFiltering = false;
             // 
-            // expireColumn
+            // expirationColumn
             // 
-            this.expireColumn.HeaderText = "ExpireDate";
-            this.expireColumn.Name = "expireColumn";
+            this.expirationColumn.AspectName = "Date";
+            this.expirationColumn.Text = "ExpireDate";
+            this.expirationColumn.UseFiltering = false;
             // 
-            // titleTab
+            // editColumn
             // 
-            this.titleTab.HorizontalScrollbarBarColor = true;
-            this.titleTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.titleTab.HorizontalScrollbarSize = 10;
-            this.titleTab.Location = new System.Drawing.Point(4, 38);
-            this.titleTab.Name = "titleTab";
-            this.titleTab.Size = new System.Drawing.Size(992, 583);
-            this.titleTab.TabIndex = 2;
-            this.titleTab.Text = "TitleManager";
-            this.titleTab.VerticalScrollbarBarColor = true;
-            this.titleTab.VerticalScrollbarHighlightOnWheel = false;
-            this.titleTab.VerticalScrollbarSize = 10;
+            this.editColumn.AspectName = "Edit";
+            this.editColumn.ButtonSizing = BrightIdeasSoftware.OLVColumn.ButtonSizingMode.CellBounds;
+            this.editColumn.IsButton = true;
+            this.editColumn.Text = "EDIT";
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.AspectName = "Delete";
+            this.deleteColumn.ButtonSizing = BrightIdeasSoftware.OLVColumn.ButtonSizingMode.CellBounds;
+            this.deleteColumn.IsButton = true;
+            this.deleteColumn.Text = "Delete";
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.BackgroundImage = global::Vindictus_Tools.Properties.Resources._1468631696_Streamline_75;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Location = new System.Drawing.Point(951, 7);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(15, 16);
+            this.settingsButton.TabIndex = 1;
+            this.settingsButton.TabStop = false;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButtonClick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 711);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
             this.Text = "Vindictus Character Management Tool";
@@ -589,8 +592,8 @@
             this.tabControl.ResumeLayout(false);
             this.charInfoTab.ResumeLayout(false);
             this.charInfoTab.PerformLayout();
-            this.itemsTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemGrid)).EndInit();
+            this.objectListTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.itemListView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -628,16 +631,18 @@
         private MetroFramework.Controls.MetroLabel craftLevelLabel;
         private MetroFramework.Controls.MetroTextBox guildBox;
         private MetroFramework.Controls.MetroLabel guildLabel;
-        private MetroFramework.Controls.MetroTabPage itemsTab;
-        private MetroFramework.Controls.MetroTabPage titleTab;
-        private MetroFramework.Controls.MetroGrid itemGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemNameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemClassColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemIdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn slotColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tradeableColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expireColumn;
+        private Button settingsButton;
+        private MetroFramework.Controls.MetroTabPage objectListTab;
+        private BrightIdeasSoftware.FastObjectListView itemListView;
+        private BrightIdeasSoftware.OLVColumn nameColumn;
+        private BrightIdeasSoftware.OLVColumn classColumn;
+        private BrightIdeasSoftware.OLVColumn countColumn;
+        private BrightIdeasSoftware.OLVColumn idColumn;
+        private BrightIdeasSoftware.OLVColumn slotColumn;
+        private BrightIdeasSoftware.OLVColumn tradeableColumn;
+        private BrightIdeasSoftware.OLVColumn expirationColumn;
+        private BrightIdeasSoftware.OLVColumn editColumn;
+        private BrightIdeasSoftware.OLVColumn deleteColumn;
     }
 }
 
