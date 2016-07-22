@@ -58,6 +58,11 @@ namespace Vindictus_Tools
             public int Quality;
             public string CraftedBy;
             public ItemCombination Combination;
+            public int Color1;
+            public int Color2;
+            public int Color3;
+            public int ExtraDurability;
+            public int ReducedDurability;
         }
 
         public struct ItemCombination
@@ -69,7 +74,6 @@ namespace Vindictus_Tools
             public string Part4;
             public string Part5;
             public int Skill;
-
         }
     }
 }

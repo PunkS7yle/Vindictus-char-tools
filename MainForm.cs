@@ -25,10 +25,7 @@ namespace Vindictus_Tools
             EstablishConnection();
             InitializeComponent();
             LoadScrolls();
-            classComboBox.Items.AddRange(Classes);
-           // var form = new EditItemForm();
-           // form.ShowDialog();
-
+            classComboBox.Items.AddRange(Classes);                   
         }
 
         private void LoadScrolls()
@@ -193,6 +190,14 @@ namespace Vindictus_Tools
                         atr.Combination.Part5 = row.Value;
                     }
 
+                }
+                foreach (var row in dh.GetItemColor(model.Id))
+                {
+                    atr.Color1 = row.Color1;
+                    atr.Color2 = row.Color2;
+                    atr.Color3 = row.Color3;
+                    atr.ReducedDurability = row.ReducedDurability;
+                    atr.ExtraDurability = row.MaxDurabilityBonus;
                 }
 
                   using (var form = new EditItemForm(atr,prefixes,suffixes,model))

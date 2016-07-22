@@ -39,6 +39,19 @@
             this.qualityComboBox = new MetroFramework.Controls.MetroComboBox();
             this.itemClassLabel = new MetroFramework.Controls.MetroLabel();
             this.itemClassBox = new MetroFramework.Controls.MetroTextBox();
+            this.colorLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.colorLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.colorLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.color1Box = new MetroFramework.Controls.MetroTextBox();
+            this.color2Box = new MetroFramework.Controls.MetroTextBox();
+            this.color3Box = new MetroFramework.Controls.MetroTextBox();
+            this.color1Picture = new System.Windows.Forms.PictureBox();
+            this.color3Picture = new System.Windows.Forms.PictureBox();
+            this.color2Picture = new System.Windows.Forms.PictureBox();
+            this.saveButton = new MetroFramework.Controls.MetroButton();
+            ((System.ComponentModel.ISupportInitialize)(this.color1Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.color3Picture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.color2Picture)).BeginInit();
             this.SuspendLayout();
             // 
             // prefixComboBox
@@ -185,12 +198,131 @@
             this.itemClassBox.TabIndex = 14;
             this.itemClassBox.UseSelectable = true;
             // 
+            // colorLabel1
+            // 
+            this.colorLabel1.AutoSize = true;
+            this.colorLabel1.Location = new System.Drawing.Point(260, 125);
+            this.colorLabel1.Name = "colorLabel1";
+            this.colorLabel1.Size = new System.Drawing.Size(51, 19);
+            this.colorLabel1.TabIndex = 15;
+            this.colorLabel1.Text = "Color 1";
+            // 
+            // colorLabel2
+            // 
+            this.colorLabel2.AutoSize = true;
+            this.colorLabel2.Location = new System.Drawing.Point(260, 160);
+            this.colorLabel2.Name = "colorLabel2";
+            this.colorLabel2.Size = new System.Drawing.Size(53, 19);
+            this.colorLabel2.TabIndex = 16;
+            this.colorLabel2.Text = "Color 2";
+            // 
+            // colorLabel3
+            // 
+            this.colorLabel3.AutoSize = true;
+            this.colorLabel3.Location = new System.Drawing.Point(260, 195);
+            this.colorLabel3.Name = "colorLabel3";
+            this.colorLabel3.Size = new System.Drawing.Size(53, 19);
+            this.colorLabel3.TabIndex = 17;
+            this.colorLabel3.Text = "Color 3";
+            // 
+            // color1Box
+            // 
+            this.color1Box.BackColor = System.Drawing.Color.White;
+            this.color1Box.Lines = new string[0];
+            this.color1Box.Location = new System.Drawing.Point(334, 120);
+            this.color1Box.MaxLength = 32767;
+            this.color1Box.Name = "color1Box";
+            this.color1Box.PasswordChar = '\0';
+            this.color1Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.color1Box.SelectedText = "";
+            this.color1Box.Size = new System.Drawing.Size(103, 24);
+            this.color1Box.TabIndex = 18;
+            this.color1Box.UseSelectable = true;
+            this.color1Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Color1BoxKeyDown);
+            // 
+            // color2Box
+            // 
+            this.color2Box.Lines = new string[0];
+            this.color2Box.Location = new System.Drawing.Point(334, 155);
+            this.color2Box.MaxLength = 32767;
+            this.color2Box.Name = "color2Box";
+            this.color2Box.PasswordChar = '\0';
+            this.color2Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.color2Box.SelectedText = "";
+            this.color2Box.Size = new System.Drawing.Size(103, 24);
+            this.color2Box.TabIndex = 19;
+            this.color2Box.UseSelectable = true;
+            this.color2Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Color2BoxKeyDown);
+            // 
+            // color3Box
+            // 
+            this.color3Box.Lines = new string[0];
+            this.color3Box.Location = new System.Drawing.Point(334, 190);
+            this.color3Box.MaxLength = 32767;
+            this.color3Box.Name = "color3Box";
+            this.color3Box.PasswordChar = '\0';
+            this.color3Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.color3Box.SelectedText = "";
+            this.color3Box.Size = new System.Drawing.Size(103, 24);
+            this.color3Box.TabIndex = 20;
+            this.color3Box.UseSelectable = true;
+            this.color3Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Color3BoxKeyDown);
+            // 
+            // color1Picture
+            // 
+            this.color1Picture.BackColor = System.Drawing.Color.Transparent;
+            this.color1Picture.Location = new System.Drawing.Point(443, 120);
+            this.color1Picture.Name = "color1Picture";
+            this.color1Picture.Size = new System.Drawing.Size(53, 24);
+            this.color1Picture.TabIndex = 24;
+            this.color1Picture.TabStop = false;
+            this.color1Picture.DoubleClick += new System.EventHandler(this.Color1PictureDoubleClick);
+            // 
+            // color3Picture
+            // 
+            this.color3Picture.BackColor = System.Drawing.Color.Transparent;
+            this.color3Picture.Location = new System.Drawing.Point(443, 190);
+            this.color3Picture.Name = "color3Picture";
+            this.color3Picture.Size = new System.Drawing.Size(53, 24);
+            this.color3Picture.TabIndex = 25;
+            this.color3Picture.TabStop = false;
+            this.color3Picture.DoubleClick += new System.EventHandler(this.Color3PictureDoubleClick);
+            // 
+            // color2Picture
+            // 
+            this.color2Picture.BackColor = System.Drawing.Color.Transparent;
+            this.color2Picture.Location = new System.Drawing.Point(443, 155);
+            this.color2Picture.Name = "color2Picture";
+            this.color2Picture.Size = new System.Drawing.Size(53, 24);
+            this.color2Picture.TabIndex = 26;
+            this.color2Picture.TabStop = false;
+            this.color2Picture.DoubleClick += new System.EventHandler(this.Color2PictureDoubleClick);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(512, 481);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(82, 48);
+            this.saveButton.TabIndex = 27;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseSelectable = true;
+            // 
             // EditItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 609);
             this.ControlBox = false;
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.color2Picture);
+            this.Controls.Add(this.color3Picture);
+            this.Controls.Add(this.color1Picture);
+            this.Controls.Add(this.color3Box);
+            this.Controls.Add(this.color2Box);
+            this.Controls.Add(this.color1Box);
+            this.Controls.Add(this.colorLabel3);
+            this.Controls.Add(this.colorLabel2);
+            this.Controls.Add(this.colorLabel1);
             this.Controls.Add(this.itemClassBox);
             this.Controls.Add(this.itemClassLabel);
             this.Controls.Add(this.qualityComboBox);
@@ -204,6 +336,9 @@
             this.Controls.Add(this.prefixComboBox);
             this.Name = "EditItemForm";
             this.Text = "Item Attributes";
+            ((System.ComponentModel.ISupportInitialize)(this.color1Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.color3Picture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.color2Picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +357,15 @@
         private MetroFramework.Controls.MetroComboBox qualityComboBox;
         private MetroFramework.Controls.MetroLabel itemClassLabel;
         private MetroFramework.Controls.MetroTextBox itemClassBox;
+        private MetroFramework.Controls.MetroLabel colorLabel1;
+        private MetroFramework.Controls.MetroLabel colorLabel2;
+        private MetroFramework.Controls.MetroLabel colorLabel3;
+        private MetroFramework.Controls.MetroTextBox color1Box;
+        private MetroFramework.Controls.MetroTextBox color2Box;
+        private MetroFramework.Controls.MetroTextBox color3Box;
+        private System.Windows.Forms.PictureBox color1Picture;
+        private System.Windows.Forms.PictureBox color3Picture;
+        private System.Windows.Forms.PictureBox color2Picture;
+        private MetroFramework.Controls.MetroButton saveButton;
     }
 }

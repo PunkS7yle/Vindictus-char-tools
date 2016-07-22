@@ -102,6 +102,13 @@ namespace Vindictus_Tools
                            delete from heroes..equippable where ID ={itemId}";
             sql.QueryMultiple(query);
         }
+
+        public IEnumerable<dynamic> GetItemColor(long itemId)
+        {
+            var query = $"select * from heroes..equippable where id={itemId}";
+            var result = sql.Query(query);
+            return result.ToList();
+        }
  
     }
 }
