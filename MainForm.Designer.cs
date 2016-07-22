@@ -88,7 +88,7 @@ namespace Vindictus_Tools
             this.tabControl.Controls.Add(this.objectListTab);
             this.tabControl.Location = new System.Drawing.Point(23, 63);
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
+            this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1020, 639);
             this.tabControl.TabIndex = 0;
             this.tabControl.UseSelectable = true;
@@ -377,7 +377,7 @@ namespace Vindictus_Tools
             this.searchComboBox.Items.AddRange(new object[] {
             "ID",
             "Name"});
-            this.searchComboBox.Location = new System.Drawing.Point(72, 12);
+            this.searchComboBox.Location = new System.Drawing.Point(71, 12);
             this.searchComboBox.Name = "searchComboBox";
             this.searchComboBox.Size = new System.Drawing.Size(77, 29);
             this.searchComboBox.TabIndex = 11;

@@ -48,7 +48,21 @@
             this.color1Picture = new System.Windows.Forms.PictureBox();
             this.color3Picture = new System.Windows.Forms.PictureBox();
             this.color2Picture = new System.Windows.Forms.PictureBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.combiClassesBox = new MetroFramework.Controls.MetroTextBox();
+            this.part1Box = new MetroFramework.Controls.MetroTextBox();
+            this.part2Box = new MetroFramework.Controls.MetroTextBox();
+            this.part3Box = new MetroFramework.Controls.MetroTextBox();
+            this.part4Box = new MetroFramework.Controls.MetroTextBox();
+            this.combiSkillBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.saveButton = new MetroFramework.Controls.MetroButton();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.part5Box = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.color1Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.color3Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.color2Picture)).BeginInit();
@@ -65,6 +79,7 @@
             this.prefixComboBox.Size = new System.Drawing.Size(121, 29);
             this.prefixComboBox.TabIndex = 0;
             this.prefixComboBox.UseSelectable = true;
+            this.prefixComboBox.SelectedIndexChanged += new System.EventHandler(this.PrefixComboBoxSelectedIndexChanged);
             // 
             // suffixComboBox
             // 
@@ -77,6 +92,7 @@
             this.suffixComboBox.Size = new System.Drawing.Size(121, 29);
             this.suffixComboBox.TabIndex = 1;
             this.suffixComboBox.UseSelectable = true;
+            this.suffixComboBox.SelectedIndexChanged += new System.EventHandler(this.SuffixComboBoxSelectedIndexChanged);
             // 
             // sufixLabel
             // 
@@ -298,14 +314,176 @@
             this.color2Picture.TabStop = false;
             this.color2Picture.DoubleClick += new System.EventHandler(this.Color2PictureDoubleClick);
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(9, 339);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel1.TabIndex = 28;
+            this.metroLabel1.Text = "Part 2";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(9, 306);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(42, 19);
+            this.metroLabel2.TabIndex = 28;
+            this.metroLabel2.Text = "Part 1";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(9, 401);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel4.TabIndex = 29;
+            this.metroLabel4.Text = "Part 4";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(9, 278);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(50, 19);
+            this.metroLabel5.TabIndex = 28;
+            this.metroLabel5.Text = "Classes";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(9, 369);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel6.TabIndex = 29;
+            this.metroLabel6.Text = "Part 3";
+            // 
+            // combiClassesBox
+            // 
+            this.combiClassesBox.BackColor = System.Drawing.Color.White;
+            this.combiClassesBox.Lines = new string[0];
+            this.combiClassesBox.Location = new System.Drawing.Point(76, 273);
+            this.combiClassesBox.MaxLength = 32767;
+            this.combiClassesBox.Name = "combiClassesBox";
+            this.combiClassesBox.PasswordChar = '\0';
+            this.combiClassesBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.combiClassesBox.SelectedText = "";
+            this.combiClassesBox.Size = new System.Drawing.Size(121, 24);
+            this.combiClassesBox.TabIndex = 30;
+            this.combiClassesBox.UseSelectable = true;
+            // 
+            // part1Box
+            // 
+            this.part1Box.BackColor = System.Drawing.Color.White;
+            this.part1Box.Lines = new string[0];
+            this.part1Box.Location = new System.Drawing.Point(76, 306);
+            this.part1Box.MaxLength = 32767;
+            this.part1Box.Name = "part1Box";
+            this.part1Box.PasswordChar = '\0';
+            this.part1Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.part1Box.SelectedText = "";
+            this.part1Box.Size = new System.Drawing.Size(121, 24);
+            this.part1Box.TabIndex = 30;
+            this.part1Box.UseSelectable = true;
+            // 
+            // part2Box
+            // 
+            this.part2Box.BackColor = System.Drawing.Color.White;
+            this.part2Box.Lines = new string[0];
+            this.part2Box.Location = new System.Drawing.Point(76, 339);
+            this.part2Box.MaxLength = 32767;
+            this.part2Box.Name = "part2Box";
+            this.part2Box.PasswordChar = '\0';
+            this.part2Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.part2Box.SelectedText = "";
+            this.part2Box.Size = new System.Drawing.Size(121, 24);
+            this.part2Box.TabIndex = 30;
+            this.part2Box.UseSelectable = true;
+            // 
+            // part3Box
+            // 
+            this.part3Box.BackColor = System.Drawing.Color.White;
+            this.part3Box.Lines = new string[0];
+            this.part3Box.Location = new System.Drawing.Point(76, 369);
+            this.part3Box.MaxLength = 32767;
+            this.part3Box.Name = "part3Box";
+            this.part3Box.PasswordChar = '\0';
+            this.part3Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.part3Box.SelectedText = "";
+            this.part3Box.Size = new System.Drawing.Size(121, 24);
+            this.part3Box.TabIndex = 30;
+            this.part3Box.UseSelectable = true;
+            // 
+            // part4Box
+            // 
+            this.part4Box.BackColor = System.Drawing.Color.White;
+            this.part4Box.Lines = new string[0];
+            this.part4Box.Location = new System.Drawing.Point(76, 401);
+            this.part4Box.MaxLength = 32767;
+            this.part4Box.Name = "part4Box";
+            this.part4Box.PasswordChar = '\0';
+            this.part4Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.part4Box.SelectedText = "";
+            this.part4Box.Size = new System.Drawing.Size(121, 24);
+            this.part4Box.TabIndex = 30;
+            this.part4Box.UseSelectable = true;
+            // 
+            // combiSkillBox
+            // 
+            this.combiSkillBox.BackColor = System.Drawing.Color.White;
+            this.combiSkillBox.Lines = new string[0];
+            this.combiSkillBox.Location = new System.Drawing.Point(76, 464);
+            this.combiSkillBox.MaxLength = 32767;
+            this.combiSkillBox.Name = "combiSkillBox";
+            this.combiSkillBox.PasswordChar = '\0';
+            this.combiSkillBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.combiSkillBox.SelectedText = "";
+            this.combiSkillBox.Size = new System.Drawing.Size(121, 24);
+            this.combiSkillBox.TabIndex = 31;
+            this.combiSkillBox.UseSelectable = true;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(9, 464);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(31, 19);
+            this.metroLabel3.TabIndex = 32;
+            this.metroLabel3.Text = "Skill";
+            // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(512, 481);
+            this.saveButton.Location = new System.Drawing.Point(512, 496);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(82, 48);
+            this.saveButton.Size = new System.Drawing.Size(82, 32);
             this.saveButton.TabIndex = 27;
-            this.saveButton.Text = "Save";
+            this.saveButton.Text = "Update";
             this.saveButton.UseSelectable = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButtonClick);
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(9, 433);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel7.TabIndex = 34;
+            this.metroLabel7.Text = "Part 5";
+            // 
+            // part5Box
+            // 
+            this.part5Box.BackColor = System.Drawing.Color.White;
+            this.part5Box.Lines = new string[0];
+            this.part5Box.Location = new System.Drawing.Point(76, 433);
+            this.part5Box.MaxLength = 32767;
+            this.part5Box.Name = "part5Box";
+            this.part5Box.PasswordChar = '\0';
+            this.part5Box.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.part5Box.SelectedText = "";
+            this.part5Box.Size = new System.Drawing.Size(121, 24);
+            this.part5Box.TabIndex = 33;
+            this.part5Box.UseSelectable = true;
             // 
             // EditItemForm
             // 
@@ -313,6 +491,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 609);
             this.ControlBox = false;
+            this.Controls.Add(this.metroLabel7);
+            this.Controls.Add(this.part5Box);
+            this.Controls.Add(this.metroLabel3);
+            this.Controls.Add(this.combiSkillBox);
+            this.Controls.Add(this.part4Box);
+            this.Controls.Add(this.part3Box);
+            this.Controls.Add(this.part2Box);
+            this.Controls.Add(this.part1Box);
+            this.Controls.Add(this.combiClassesBox);
+            this.Controls.Add(this.metroLabel6);
+            this.Controls.Add(this.metroLabel4);
+            this.Controls.Add(this.metroLabel5);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.color2Picture);
             this.Controls.Add(this.color3Picture);
@@ -366,6 +558,20 @@
         private System.Windows.Forms.PictureBox color1Picture;
         private System.Windows.Forms.PictureBox color3Picture;
         private System.Windows.Forms.PictureBox color2Picture;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroTextBox combiClassesBox;
+        private MetroFramework.Controls.MetroTextBox part1Box;
+        private MetroFramework.Controls.MetroTextBox part2Box;
+        private MetroFramework.Controls.MetroTextBox part3Box;
+        private MetroFramework.Controls.MetroTextBox part4Box;
+        private MetroFramework.Controls.MetroTextBox combiSkillBox;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroButton saveButton;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroTextBox part5Box;
     }
 }

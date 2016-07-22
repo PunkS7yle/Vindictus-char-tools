@@ -127,7 +127,7 @@
             this.Controls.Add(this.closeFormButton);
             this.Controls.Add(this.ipBox);
             this.Name = "ConfigForm";
-            this.Text = "ConfigForm";
+            this.Text = "Connection Info";
             this.ResumeLayout(false);
             this.PerformLayout();
 

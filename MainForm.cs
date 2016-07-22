@@ -16,7 +16,9 @@ namespace Vindictus_Tools
     {
         private DatabaseHandler dh;
         private readonly List<string> itemNames = File.ReadLines(ItemList).ToList();
-        public readonly Character Char = new Character();  
+        public List<string> SuffixNames = File.ReadLines(SuffixList).ToList();
+        public List<string> PrefixNames = File.ReadLines(PrefixList).ToList();
+        private readonly Character Char = new Character();  
         private readonly Dictionary<string, string> prefixes = new Dictionary<string, string>();
         private readonly Dictionary<string, string> suffixes = new Dictionary<string, string>();
 
@@ -25,17 +27,18 @@ namespace Vindictus_Tools
             EstablishConnection();
             InitializeComponent();
             LoadScrolls();
+            searchComboBox.SelectedIndex = 1;
             classComboBox.Items.AddRange(Classes);                   
         }
 
         private void LoadScrolls()
         {
-            foreach (var line in File.ReadAllLines(PrefixList))
+            foreach (var line in PrefixNames)
             {
                 var tmp = line.Split('=');
                 prefixes.Add(tmp[0], tmp[1]);
             }
-            foreach (var line in File.ReadAllLines(SuffixList))
+            foreach (var line in SuffixNames)
             {
                 var tmp = line.Split('=');
                 suffixes.Add(tmp[0], tmp[1]);
@@ -200,7 +203,7 @@ namespace Vindictus_Tools
                     atr.ExtraDurability = row.MaxDurabilityBonus;
                 }
 
-                  using (var form = new EditItemForm(atr,prefixes,suffixes,model))
+                  using (var form = new EditItemForm(atr,prefixes,suffixes,model,dh))
                   {
                       var result =form.ShowDialog();
                       if (result == DialogResult.OK)
@@ -212,7 +215,7 @@ namespace Vindictus_Tools
             else if (value == "Delete")
             {
                 
-                DialogResult deleteResult = MessageBox.Show( $"Are you sure you want to delete the item : \n Name : {model.Name} \n Slot : {model.SlotId}","WARNING",MessageBoxButtons.YesNo);
+                DialogResult deleteResult = MessageBox.Show( $"\tAre you sure you want to delete the item : \n Name : {model.Name} \n Slot : {model.SlotId}","WARNING",MessageBoxButtons.YesNo);
                 if (deleteResult == DialogResult.Yes)
                 {
                     dh.DeleteItem(model.Id);
@@ -247,6 +250,6 @@ namespace Vindictus_Tools
                 }
             }
             EstablishConnection();
-        }
+        }  
     }
 }

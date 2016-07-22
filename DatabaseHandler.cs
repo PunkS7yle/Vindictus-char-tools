@@ -9,7 +9,7 @@ using Dapper;
 namespace Vindictus_Tools
 {
     
-    class DatabaseHandler
+    public class DatabaseHandler
     {
         private readonly SqlConnection sql;
         public DatabaseHandler(string ip, string user, string pass, string db)
@@ -108,6 +108,49 @@ namespace Vindictus_Tools
             var query = $"select * from heroes..equippable where id={itemId}";
             var result = sql.Query(query);
             return result.ToList();
+        }
+
+        public void UpdateItemAttributes( // TODO : Pass an object instead of this stupid list
+            long itemId,
+            string enhance,
+            int quality,
+            string prefix,
+            string suffix,
+            string craftedBy,
+            string Class,
+            int color1,
+            int color2,
+            int color3,
+            int extraDura,
+            int minusDura,
+            string combiParts,
+            string part1,
+            string part2,
+            string part3,
+            string part4,
+            string part5,
+            int skillId
+            )
+        {
+            var query =
+                $@"delete from heroes..itemattribute where itemId={itemId};
+                           update heroes..equippable set Color1 = {color1},Color2={color2},Color3={color3},ReducedDurability={minusDura},MaxDurabilityBonus={extraDura} where id = {itemId};
+                           update heroes..item set ItemClass = '{Class}' where ID = {itemId};
+                           insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'ENHANCE','{enhance}',0,0);
+                           insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'QUALITY','{craftedBy}',{quality},0);
+                           insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'PREFIX','{prefix}',0,0);
+                           insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'SUFFIX','{suffix}',0,0);
+                        ";
+            sql.QueryMultiple(query);
+            if (string.IsNullOrWhiteSpace(combiParts)) return;
+            var query2 = $@"insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'COMBINATION','{combiParts}',0,0);
+                                insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'PS_0','{part1}',{combiParts.Substring(2, 1)},{skillId});
+                                insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'PS_1','{part2}',{combiParts.Substring(6, 1)},0);
+                                insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'PS_2','{part3}',{combiParts.Substring(10, 1)},0);
+                                insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'PS_3','{part4}',{combiParts.Substring(14, 1)},0);
+                                insert into heroes..itemattribute (itemid,attribute,value,arg,arg2) values ({itemId},'PS_4','{part5}',{combiParts.Substring(18, 1)},0);
+                                ";
+            sql.QueryMultiple(query2);
         }
  
     }
