@@ -2,10 +2,6 @@
 
 namespace Vindictus_Tools
 {
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-
     public abstract class Enums
     {
 
@@ -13,8 +9,7 @@ namespace Vindictus_Tools
         public const string PrefixList = "prefix.txt";
         public const string SuffixList = "suffix.txt";
         public static readonly string[] Classes = { "Lann", "Fiona", "Evie", "Karok", "Kai", "Vella", "Hurk", "Lynn", "Arisha" };
-        
-              
+                    
         public class Connection
         {
             public string Ip;

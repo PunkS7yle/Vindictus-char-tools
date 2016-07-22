@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Linq;
 
 using static Vindictus_Tools.Enums;
 using static System.Convert;
 
 namespace Vindictus_Tools
 {
-    using System.IO;
-    using System.Linq;
+    
 
     public partial class EditItemForm : MetroForm
     {
@@ -19,8 +19,8 @@ namespace Vindictus_Tools
         private string SuffixClass { get; set; }
 
         Color color1, color2, color3 ;
-
-        private Dictionary<string, string> sD,pD;
+        private readonly Dictionary<string, string> sD;
+        private readonly Dictionary<string, string> pD;
 
         public EditItemForm(ItemAttribute itemAttribute, Dictionary<string,string> prefixDictionary, Dictionary<string,string> suffixDictionary, Item model, DatabaseHandler dh )
         {

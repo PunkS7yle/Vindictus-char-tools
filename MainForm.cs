@@ -16,8 +16,8 @@ namespace Vindictus_Tools
     {
         private DatabaseHandler dh;
         private readonly List<string> itemNames = File.ReadLines(ItemList).ToList();
-        public List<string> SuffixNames = File.ReadLines(SuffixList).ToList();
-        public List<string> PrefixNames = File.ReadLines(PrefixList).ToList();
+        private readonly List<string> suffixNames = File.ReadLines(SuffixList).ToList();
+        private readonly List<string> prefixNames = File.ReadLines(PrefixList).ToList();
         private readonly Character Char = new Character();  
         private readonly Dictionary<string, string> prefixes = new Dictionary<string, string>();
         private readonly Dictionary<string, string> suffixes = new Dictionary<string, string>();
@@ -33,12 +33,12 @@ namespace Vindictus_Tools
 
         private void LoadScrolls()
         {
-            foreach (var line in PrefixNames)
+            foreach (var line in prefixNames)
             {
                 var tmp = line.Split('=');
                 prefixes.Add(tmp[0], tmp[1]);
             }
-            foreach (var line in SuffixNames)
+            foreach (var line in suffixNames)
             {
                 var tmp = line.Split('=');
                 suffixes.Add(tmp[0], tmp[1]);
@@ -135,7 +135,7 @@ namespace Vindictus_Tools
 
             itemListView.ButtonClick += delegate (object sender, CellClickEventArgs e)
             {
-                MessageBox.Show($"Button clicked: ({e.RowIndex}, {e.SubItem}, {e.Model})");
+                //MessageBox.Show($"Button clicked: ({e.RowIndex}, {e.SubItem}, {e.Model})");
                 itemListView.DisableObject(e.Model);
                 HandleItem(e.RowIndex,e.SubItem.Text,(Item)e.Model);              
                 itemListView.RefreshObject(e.Model);
